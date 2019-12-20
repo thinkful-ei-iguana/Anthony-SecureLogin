@@ -6,6 +6,7 @@ const helmet = require("helmet");
 const { NODE_ENV } = require("./config");
 const thingsRouter = require("./things/things-router");
 const reviewsRouter = require("./reviews/reviews-router");
+const authRouter = require("./middleware/Auth-Router");
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(
 );
 app.use(cors());
 app.use(helmet());
+app.use("/api/auth", authRouter);
 
 app.use("/api/things", thingsRouter);
 app.use("/api/reviews", reviewsRouter);
